@@ -40,6 +40,8 @@ Integra as seguintes bibliotecas:
 - Modular
 - Equatable
 - Either
+- Mocktail
+- Http
 
 ## 💻 Projeto
 
