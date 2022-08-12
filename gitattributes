@@ -1,0 +1,7 @@
+$ cat .gitattributes
+
+*.css linguist-language=Dart
+*.c++ linguist-language=Dart
+*.HTML linguist-language=Dart
+
+
