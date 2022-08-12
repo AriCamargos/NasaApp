@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:nasa_app/feature/domain/entities/space_media_entity.dart';
 
 class SpaceMediaDateModel extends SpaceMediaEntity {
