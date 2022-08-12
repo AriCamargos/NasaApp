@@ -27,7 +27,7 @@ void main() {
         "https://apod.nasa.gov/apod/image/2207/StrawberryMoonRise_Busilacchi_6720.jpg",
   );
 
-  test('should get space media from for a given date from the repository',
+  test('should get space media entit from for a given date from the repository',
       () async {
     when(() => repository.getSpaceMediaFromDate(tDate))
         .thenAnswer((invocation) async => Right(tSpaceMedia));

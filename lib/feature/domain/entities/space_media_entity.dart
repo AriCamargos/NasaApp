@@ -19,4 +19,6 @@ class SpaceMediaEntity extends Equatable {
         title,
         mediaUrl,
       ];
+
+      
 }
