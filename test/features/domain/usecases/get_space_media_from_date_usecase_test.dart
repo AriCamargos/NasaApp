@@ -27,6 +27,7 @@ void main() {
         "https://apod.nasa.gov/apod/image/2207/StrawberryMoonRise_Busilacchi_6720.jpg",
   );
 
+//Essa implementação é apenas para fazer o mock
   test('should get space media entit from for a given date from the repository',
       () async {
     when(() => repository.getSpaceMediaFromDate(tDate))
@@ -35,4 +36,6 @@ void main() {
     expect(result, Right(tSpaceMedia));
     verify(() => repository);
   });
+
+  final result = await repository.getSpaceMediaFromDate(tDate);
 }
