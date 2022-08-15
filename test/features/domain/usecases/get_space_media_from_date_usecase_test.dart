@@ -8,14 +8,14 @@ import 'package:nasa_app/feature/domain/usecases/get_space_media_from_date_useca
 class MockSpaceMediaRepository extends Mock implements ISpaceMediaRepository {}
 
 void main() {
-  late GetSpaceMediaUsecase usecase;
+  late GetSpaceMediaFromDateUsecase usecase;
   late ISpaceMediaRepository repository;
 
   final tDate = DateTime(2022, 07, 05);
 
   setUp((() {
     repository = MockSpaceMediaRepository();
-    usecase = GetSpaceMediaUsecase(repository);
+    usecase = GetSpaceMediaFromDateUsecase(repository);
   }));
 
   // ignore: prefer_const_constructors
@@ -37,5 +37,5 @@ void main() {
     verify(() => repository);
   });
 
-  final result = await repository.getSpaceMediaFromDate(tDate);
+//  final result = await repository.getSpaceMediaFromDate(tDate);
 }

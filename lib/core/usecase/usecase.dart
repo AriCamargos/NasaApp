@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 import '../erros/failures.dart';
 
-abstract class getSpaceMediaFromDateUsecase<Output, Input> {
+abstract class Usecase<Output, Input> {
   Future<Either<Failure, Output>> call(DateTime date);
 }
 
