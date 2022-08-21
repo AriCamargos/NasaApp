@@ -30,17 +30,22 @@ class SpaceMediaDateModel extends SpaceMediaEntity {
         'title': title,
       };
 
-  factory SpaceMediaDateModel.faker(Map<String, dynamic> fake) {
-    return SpaceMediaDateModel(
-      description: faker.lorem.sentence(),
-      mediaUrl: faker.internet.random.boolean().toString(),
-      title: faker.lorem.sentence(),
-      mediaType: faker.image.image(
-        keywords: ['space', 'nasa'],
-        random: true,
-        width: 1200,
-        height: 900,
-      ),
+  factory SpaceMediaDateModel.fake() => SpaceMediaDateModel(
+        description: faker.lorem.sentence(),
+        mediaUrl: faker.internet.httpUrl(),
+        title: faker.lorem.sentence(),
+        mediaType: faker.image.image(
+          keywords: ['space', 'nasa'],
+          random: true,
+          width: 1200,
+          height: 900,
+        ),
+      );
+
+  static List<SpaceMediaDateModel> fakeList({required int lenght}) {
+    return List<SpaceMediaDateModel>.generate(
+      lenght,
+      (index) => SpaceMediaDateModel.fake(),
     );
   }
 }
