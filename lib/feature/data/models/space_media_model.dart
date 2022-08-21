@@ -1,8 +1,8 @@
 import 'package:nasa_app/feature/domain/entities/space_media_entity.dart';
 import 'package:faker/faker.dart';
 
-class SpaceMediaDateModel extends SpaceMediaEntity {
-  const SpaceMediaDateModel({
+class SpaceMediaModel extends SpaceMediaEntity {
+  const SpaceMediaModel({
     required String description,
     required String mediaUrl,
     required String title,
@@ -14,8 +14,8 @@ class SpaceMediaDateModel extends SpaceMediaEntity {
           mediaType: mediaType,
         );
 
-  factory SpaceMediaDateModel.fromJson(Map<String, dynamic> json) {
-    return SpaceMediaDateModel(
+  factory SpaceMediaModel.fromJson(Map<String, dynamic> json) {
+    return SpaceMediaModel(
       description: json['explanation'],
       mediaUrl: json['url'],
       title: json['title'],
@@ -30,7 +30,7 @@ class SpaceMediaDateModel extends SpaceMediaEntity {
         'title': title,
       };
 
-  factory SpaceMediaDateModel.fake() => SpaceMediaDateModel(
+  factory SpaceMediaModel.fake() => SpaceMediaModel(
         description: faker.lorem.sentence(),
         mediaUrl: faker.internet.httpUrl(),
         title: faker.lorem.sentence(),
@@ -42,10 +42,10 @@ class SpaceMediaDateModel extends SpaceMediaEntity {
         ),
       );
 
-  static List<SpaceMediaDateModel> fakeList({required int lenght}) {
-    return List<SpaceMediaDateModel>.generate(
+  static List<SpaceMediaModel> fakeList({required int lenght}) {
+    return List<SpaceMediaModel>.generate(
       lenght,
-      (index) => SpaceMediaDateModel.fake(),
+      (index) => SpaceMediaModel.fake(),
     );
   }
 }
