@@ -1,10 +1,11 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:nasa_app/core/erros/failures.dart';
 import 'package:nasa_app/feature/domain/entities/space_media_entity.dart';
 import 'package:nasa_app/feature/domain/repositories/space_media_repository.dart';
 import 'package:nasa_app/feature/domain/usecases/get_space_media_from_date_usecase.dart';
-
+import 'package:mocktail/src/mocktail.dart';
 class MockSpaceMediaRepository extends Mock implements ISpaceMediaRepository {}
 
 void main() {
@@ -28,14 +29,26 @@ void main() {
   );
 
 //Essa implementação é apenas para fazer o mock
+//Caso feliz, vai fazer isso no caso de sucesso
   test('should get space media entit from for a given date from the repository',
       () async {
     when(() => repository.getSpaceMediaFromDate(tDate))
-        .thenAnswer((invocation) async => Right(tSpaceMedia));
+        .thenAnswer((_) async => Right<Failure, SpaceMediaEntity>(tSpaceMedia));
     final result = await usecase(tDate);
     expect(result, Right(tSpaceMedia));
-    verify(() => repository);
+    verify(() => repository.getSpaceMediaFromDate(tDate));
   });
 
-//  final result = await repository.getSpaceMediaFromDate(tDate);
+//Caso não feliz
+ test('should return a ServerFailure when don\'t sucessed',
+      () async {
+    when(() => repository.getSpaceMediaFromDate(tDate))
+        .thenAnswer((_) async => Left<Failure, SpaceMediaEntity>(ServerFailure()));
+    final result = await usecase(tDate);
+    expect(result, Left(ServerFailure()));
+    verify(() => repository.getSpaceMediaFromDate(tDate));
+
+  });
 }
+
+
