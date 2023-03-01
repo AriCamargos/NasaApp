@@ -12,7 +12,7 @@ class SpaceMediaRepositoryImplementation implements ISpaceMediaRepository {
   SpaceMediaRepositoryImplementation(
     this.datasource,
   );
-  
+
   @override
   Future<Either<Failure, SpaceMediaEntity>> getSpaceMediaFromDate(
       DateTime date) {

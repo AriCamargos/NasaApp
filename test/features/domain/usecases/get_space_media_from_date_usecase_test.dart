@@ -6,6 +6,7 @@ import 'package:nasa_app/feature/domain/entities/space_media_entity.dart';
 import 'package:nasa_app/feature/domain/repositories/space_media_repository.dart';
 import 'package:nasa_app/feature/domain/usecases/get_space_media_from_date_usecase.dart';
 import 'package:mocktail/src/mocktail.dart';
+
 class MockSpaceMediaRepository extends Mock implements ISpaceMediaRepository {}
 
 void main() {
