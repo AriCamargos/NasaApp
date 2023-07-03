@@ -3,7 +3,7 @@ import 'package:nasa_app/core/erros/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:nasa_app/feature/domain/repositories/space_media_repository.dart';
 
-import '../datasources/space_media_datasource.dart';
+import '../datasources/ispace_media_datasource.dart';
 
 class SpaceMediaRepositoryImplementation implements ISpaceMediaRepository {
   // Datasource implementa o meu banco de dados
