@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:nasa_app/feature/data/datasources/space_media_datasource.dart';
+import 'package:nasa_app/feature/data/datasources/ispace_media_datasource.dart';
 import 'package:nasa_app/feature/data/models/space_media_model.dart';
 import 'package:nasa_app/feature/data/repositories/space_media_repository_implementation.dart';
 

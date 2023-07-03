@@ -1,31 +1,41 @@
-// import 'package:flutter_test/flutter_test.dart';
-// import 'package:nasa_app/feature/data/models/space_media_date_model.dart';
+import 'dart:convert';
 
-// void main() {
-//   test('Create to Json', () {
-//     final fake = SpaceMediaDateModel.fake();
+import 'package:flutter_test/flutter_test.dart';
+import 'package:nasa_app/feature/data/models/space_media_model.dart';
 
-//     final json = {
-//       'description': fake.description,
-//       'media_type': fake.mediaType,
-//       'media_url': fake.mediaUrl,
-//       'title': fake.title,
-//     };
+import '../../../mock/space_media_mock.dart';
 
-//     final spaceMedia = SpaceMediaDateModel.fromJson(json);
+void main() {
+  const tSpaceMediaModel = SpaceMediaModel(
+    description:
+        'Meteors can be colorful. While the human eye usually cannot discern many colors, cameras often can. Pictured is a Quadrantids meteor captured by camera over Missouri, USA, early this month that was not only impressively bright, but colorful. The radiant grit, likely cast off by asteroid 2003 EH1, blazed a path across Earth\'s atmosphere.  Colors in meteors usually originate from ionized elements released as the meteor disintegrates, with blue-green typically originating from magnesium, calcium radiating violet, and nickel glowing green. Red, however, typically originates from energized nitrogen and oxygen in the Earth\'s atmosphere.  This bright meteoric fireball was gone in a flash -- less than a second -- but it left a wind-blown ionization trail that remained visible for several minutes.   APOD is available via Facebook: in English, Catalan and Portuguese',
+    mediaType: 'image',
+    title: 'A Colorful Quadrantid Meteor',
+    mediaUrl:
+        'https://apod.nasa.gov/apod/image/2102/MeteorStreak_Kuszaj_1080.jpg',
+  );
 
-//     expect(spaceMedia, isA<SpaceMediaDateModel>());
+  test('shold be a subclass of SpaceMediaEntity', () {
+    expect(tSpaceMediaModel, isA<SpaceMediaModel>());
+  });
 
-//     expect(spaceMedia, equals(fake));
-//   });
+  test('Shold return a valid model', () {
+    final Map<String, dynamic> jsonMap = json.decode(spaceMediaMock);
+    final result = SpaceMediaModel.fromJson(jsonMap);
+    expect(result, tSpaceMediaModel);
+  });
 
-//   test('Create a fake model', () {
-//     final spaceMedia = SpaceMediaDateModel.fake();
+  test('should return a json map containing the proper data', () {
+    final expectedMap = {
+      "explanation":
+          "Meteors can be colorful. While the human eye usually cannot discern many colors, cameras often can. Pictured is a Quadrantids meteor captured by camera over Missouri, USA, early this month that was not only impressively bright, but colorful. The radiant grit, likely cast off by asteroid 2003 EH1, blazed a path across Earth's atmosphere.  Colors in meteors usually originate from ionized elements released as the meteor disintegrates, with blue-green typically originating from magnesium, calcium radiating violet, and nickel glowing green. Red, however, typically originates from energized nitrogen and oxygen in the Earth's atmosphere.  This bright meteoric fireball was gone in a flash -- less than a second -- but it left a wind-blown ionization trail that remained visible for several minutes.   APOD is available via Facebook: in English, Catalan and Portuguese",
+      "media_type": "image",
+      "title": "A Colorful Quadrantid Meteor",
+      "url":
+          "https://apod.nasa.gov/apod/image/2102/MeteorStreak_Kuszaj_1080.jpg"
+    };
 
-//     // expect(spaceMedia, isA<SpaceMediaDateModel>());
-
-//     final otherSpaceMedia = SpaceMediaDateModel.fake();
-
-//     expect(otherSpaceMedia, isNot(spaceMedia));
-//   });
-// }
+    final result = tSpaceMediaModel.toJson();
+    expect(result, expectedMap);
+  });
+}
